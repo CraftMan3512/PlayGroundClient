@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerNameTag : MonoBehaviour
 {
+    public PlayerManager pm;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,7 @@ public class PlayerNameTag : MonoBehaviour
     void Update()
     {
 
-        GetComponent<TextMeshProUGUI>().text = transform.parent.parent.parent.GetComponent<PlayerManager>().username;
+        GetComponent<TextMeshProUGUI>().text = pm.username;
 
     }
 }
