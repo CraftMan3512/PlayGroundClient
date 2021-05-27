@@ -25,7 +25,15 @@ public class ClientHandle
 
     public static void ToGameScene(Packet packet)
     {
-        
+
+        int id = packet.ReadInt();
+
+        if (id != Client.GetMyId())
+        {
+            
+            Debug.Log("ID MISMATCH!!!!!!!!!");
+            
+        }
         //change scene
         SceneChanger.ChangeScene(SceneTypes.HubWorldScene);
         

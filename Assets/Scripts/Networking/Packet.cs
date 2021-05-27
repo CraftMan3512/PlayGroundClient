@@ -25,6 +25,7 @@ public enum ClientPackets
     playerChangeScene,
     playerPosition,
     SendMessage,
+    SpawnPlayers,
         
 }
 

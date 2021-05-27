@@ -38,6 +38,20 @@ public class ClientSend : MonoBehaviour
 
     }
 
+    public static void SpawnPlayers()
+    {
+
+        using (Packet packet = new Packet((int) ClientPackets.SpawnPlayers))
+        {
+            
+            packet.Write(Client.GetMyId());
+            
+            SendTCPData(packet);
+            
+        }
+        
+    }
+
     public static void ChangedScene(int newScene)
     {
 
