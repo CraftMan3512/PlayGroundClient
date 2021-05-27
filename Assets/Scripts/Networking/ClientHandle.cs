@@ -19,8 +19,16 @@ public class ClientHandle
         ClientSend.WelcomeReceived();
         Client.instance.udp.Connect(((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
         
+        
+        
+    }
+
+    public static void ToGameScene(Packet packet)
+    {
+        
         //change scene
         SceneChanger.ChangeScene(SceneTypes.HubWorldScene);
+        
     }
 
     public static void SpawnPlayer(Packet packet)

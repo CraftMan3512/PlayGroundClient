@@ -13,6 +13,7 @@ public enum ServerPackets
     playerPosition,
     SendMessage,
     ToErrorScreen,
+    ToGameScene,
 
 
 }
