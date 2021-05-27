@@ -66,5 +66,19 @@ public class ClientSend : MonoBehaviour
         
     }
 
+    public static void SendMessage(string msg)
+    {
+
+        using (Packet packet = new Packet((int) ClientPackets.SendMessage))
+        {
+            
+            packet.Write(msg);
+            
+            SendTCPData(packet);
+            
+        }
+        
+    }
+
     #endregion
 }

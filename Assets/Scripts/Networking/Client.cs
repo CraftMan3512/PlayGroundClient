@@ -376,12 +376,14 @@ public class Client : MonoBehaviour
             {(int)ServerPackets.playerChangeScene, ClientHandle.PlayerChangedScene},
             {(int)ServerPackets.SpawnPlayer, ClientHandle.SpawnPlayer},
             {(int)ServerPackets.playerPosition, ClientHandle.PlayerPosition},
+            {(int)ServerPackets.SendMessage, ClientHandle.SendMessage},
+            {(int)ServerPackets.ToErrorScreen, ClientHandle.ToErrorScreen},
         };
         Debug.Log("Initialized Packets.");
 
     }
     
-    private void Disconnect()
+    public void Disconnect()
     {
         if (isConnected)
         {
@@ -395,7 +397,7 @@ public class Client : MonoBehaviour
         }
     }
     
-    private void Disconnect(Exception ex)
+    public void Disconnect(Exception ex)
     {
         if (isConnected)
         {

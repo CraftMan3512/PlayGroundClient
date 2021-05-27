@@ -68,7 +68,21 @@ public class ClientHandle
         GameManager.UpdatePlayerPos(id, newPos);
 
     }
-    
-    
+
+    public static void SendMessage(Packet packet)
+    {
+
+        string message = packet.ReadString();
+        
+        Debug.Log($"Message from server: {message}");
+
+    }
+
+    public static void ToErrorScreen(Packet packet)
+    {
+        string msg = packet.ReadString();
+        Client.instance.Disconnect(new Exception(msg));
+        
+    }
 
 }

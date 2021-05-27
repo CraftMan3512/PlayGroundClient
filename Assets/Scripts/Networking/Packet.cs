@@ -11,6 +11,9 @@ public enum ServerPackets
     SpawnPlayer,
     playerChangeScene,
     playerPosition,
+    SendMessage,
+    ToErrorScreen,
+
 
 }
 
@@ -20,6 +23,7 @@ public enum ClientPackets
     welcomeReceived = 1,
     playerChangeScene,
     playerPosition,
+    SendMessage,
         
 }
 
