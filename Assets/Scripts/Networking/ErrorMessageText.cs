@@ -7,7 +7,7 @@ using UnityEngine;
 public class ErrorMessageText : MonoBehaviour
 {
 
-    public static string currentErrorMessage = "This is an error message. Uh oh. you broke something";
+    public static string currentErrorMessage = ":( This is an error message. Uh oh. you broke something";
 
     private void Start()
     {

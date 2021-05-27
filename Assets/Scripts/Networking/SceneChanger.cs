@@ -42,8 +42,13 @@ public static class SceneChanger
     {
 
         ErrorMessageText.currentErrorMessage = errorMessage;
-        SceneManager.LoadScene("ErrorScreen");
-        //Debug.Log("WENT TO ERROR SCREEN!!!!");
+        ThreadManager.ExecuteOnMainThread(() =>
+        {
+            
+            SceneManager.LoadScene((int)SceneTypes.ErrorScreen); 
+            
+        });
+        Debug.Log("WENT TO ERROR SCREEN!!!!");
 
     }
 
