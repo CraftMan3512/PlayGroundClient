@@ -48,8 +48,13 @@ public class ClientHandle
     {
 
         int id = packet.ReadInt();
-        Object.Destroy(GameManager.players[id].gameObject);
-        GameManager.players.Remove(id);
+        if (GameManager.players.ContainsKey(id))
+        {
+            
+            Object.Destroy(GameManager.players[id].gameObject);
+            GameManager.players.Remove(id);   
+            
+        }
 
     }
 
