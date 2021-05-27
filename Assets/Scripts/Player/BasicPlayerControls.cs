@@ -5,7 +5,7 @@ using UnityEngine;
 public class BasicPlayerControls : IPlayerControls
 {
 
-    public float speed = 1f;
+    public float speed = 3f;
     
     public void MovePlayer(GameObject player)
     {

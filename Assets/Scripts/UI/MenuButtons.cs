@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuButtons : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class MenuButtons : MonoBehaviour
     public CanvasGroup thisMenu;
     public CanvasGroup serversMenu;
     
+    public static string usernameEntered = "TESTUSERNAME";
+
     public void PlayGame()
     {
 
@@ -32,5 +35,19 @@ public class MenuButtons : MonoBehaviour
         #endif
         
         
+    }
+
+    public void setUsernameEntered(string text)
+    {
+
+        usernameEntered = text;
+
+    }
+
+    public void GoToMainMenu()
+    {
+
+        SceneChanger.ChangeScene(SceneTypes.TitleScreen);
+
     }
 }

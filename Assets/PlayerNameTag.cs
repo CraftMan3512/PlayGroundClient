@@ -1,23 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class PlayerControls : MonoBehaviour
+public class PlayerNameTag : MonoBehaviour
 {
-    private IPlayerControls controlsScript;
     // Start is called before the first frame update
     void Start()
     {
-
-        controlsScript = new BasicPlayerControls();
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        controlsScript.MovePlayer(gameObject);
+        GetComponent<TextMeshProUGUI>().text = transform.parent.parent.parent.GetComponent<PlayerManager>().username;
 
     }
 }
