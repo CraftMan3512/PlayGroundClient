@@ -28,8 +28,13 @@ public static class SceneChanger
         //if connected, tell server we changed scene
         if (Client.instance != null)
         {
-            
-            ClientSend.ChangedScene((int) nextScene);
+            //if not menu
+            if (nextScene != SceneTypes.ErrorScreen && nextScene != SceneTypes.TitleScreen)
+            {
+                
+                ClientSend.ChangedScene((int) nextScene);   
+                
+            }
                 
         }
         
