@@ -41,7 +41,7 @@ public class Client : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        Disconnect();
+        CloseConnection();
     }
 
     public void SetIP(string _ip)
@@ -383,23 +383,18 @@ public class Client : MonoBehaviour
         Debug.Log("Initialized Packets.");
 
     }
-    
-    public void Disconnect()
-    {
-        if (isConnected)
-        {
 
-            isConnected = false;
-            tcp?.socket?.Close();
-            udp?.socket?.Close();
-            
-            Debug.Log("Disconnected from server.");
-
-        }
-    }
-    
     public void Disconnect(Exception ex)
     {
+        CloseConnection();
+        //disconnected, go to disconnect screen
+        SceneChanger.GoToErrorScreen($"Disconnected from server\n {ex.Message}");
+        Debug.Log("Disconnected from server.");
+    }
+
+    private void CloseConnection()
+    {
+        
         if (isConnected)
         {
 
@@ -407,11 +402,12 @@ public class Client : MonoBehaviour
             tcp?.socket?.Close();
             udp?.socket?.Close();
             
-            //disconnected, go to disconnect screen
-            SceneChanger.GoToErrorScreen($"Disconnected from server\n {ex.Message}");
+            GameManager.players.Clear();
+            
             Debug.Log("Disconnected from server.");
 
         }
+        
     }
     
 }
