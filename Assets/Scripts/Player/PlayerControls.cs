@@ -5,11 +5,13 @@ using UnityEngine;
 public class PlayerControls : MonoBehaviour
 {
     private IPlayerControls controlsScript;
+    public GameObject head;
     // Start is called before the first frame update
     void Start()
     {
 
-        controlsScript = new BasicPlayerControls();
+        controlsScript = new BasicPlayerControls(head);
+        
 
     }
 
