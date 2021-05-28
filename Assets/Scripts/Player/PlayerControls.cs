@@ -6,13 +6,12 @@ public class PlayerControls : MonoBehaviour
 {
     private IPlayerControls controlsScript;
     public GameObject head;
-
-    private bool invokeStarted = false;
     // Start is called before the first frame update
     void Start()
     {
 
         controlsScript = new BasicPlayerControls(head, GetComponent<Rigidbody>());
+      
 
     }
 
@@ -27,26 +26,19 @@ public class PlayerControls : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (!invokeStarted)
+        if (Client.instance != null)
         {
             
-            InvokeRepeating(nameof(SendPlayerPosToServer),0,0.033333f);
-            invokeStarted = true;
+            SendPlayerPosToServer();//TODO PROGRAMMER CETTE FONCTION LA
 
         }
-        
+
     }
 
     private void SendPlayerPosToServer()
     {
-
-        if (Client.instance != null)
-        {
-            
-            ClientSend.PlayerPosition(GetComponent<Rigidbody>().position);  
-            Debug.Log("A");
-            
-        }
-
+        
+        ClientSend.PlayerPosition(transform.position);
+        
     }
 }
