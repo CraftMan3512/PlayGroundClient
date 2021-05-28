@@ -6,9 +6,14 @@ public class CameraControls : MonoBehaviour
 {
    
     private ICameraControls cameraControl;
+    private bool localplayer;
     // Start is called before the first frame update
     void Start()
     {
+        if (gameObject.transform.parent.tag.Equals("LocalPlayer"))
+        {
+            localplayer = true;
+        }
         cameraControl = new BasicCameraControls();
         ToggleCursor(false);
     }
@@ -16,7 +21,10 @@ public class CameraControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        cameraControl.MoveCamera(gameObject);
+        if (localplayer)
+        {
+            cameraControl.MoveCamera(gameObject);
+        }
     }
 
     public void ToggleCursor(bool toggled)
