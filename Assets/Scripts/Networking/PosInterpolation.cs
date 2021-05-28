@@ -38,7 +38,7 @@ public class PosInterpolation : MonoBehaviour
         if (Movements.Count > 0)
         {
 
-            float fraction = (Time.time - startTime) / Time.fixedDeltaTime;
+            double fraction = (Time.time - startTime) / Time.fixedDeltaTime;
             
             //Debug.Log($"TRYING TO MOVE OTHER PLAYER, FRACTION IS {fraction}, {Movements.Count} POS INSIDE");
 
@@ -50,12 +50,12 @@ public class PosInterpolation : MonoBehaviour
 
                     case InterpolationTypes.Lerp:
 
-                        tf.position = Vector3.Lerp(PreviousPos,Movements.Peek(), fraction);
+                        tf.position = Vector3.Lerp(PreviousPos,Movements.Peek(), (float)fraction);
     
                     break;
                     case InterpolationTypes.Slerp:
 
-                        tf.position = Vector3.Slerp(PreviousPos, Movements.Peek(), fraction);
+                        tf.position = Vector3.Slerp(PreviousPos, Movements.Peek(), (float)fraction);
     
                     break;
                     

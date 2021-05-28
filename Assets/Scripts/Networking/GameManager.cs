@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     public static void UpdatePlayerPos(int id, Vector3 newPos)
     {
 
-        if (players.ContainsKey(id)) players[id].transform.position = newPos;
+        if (players.ContainsKey(id)) players[id].GetComponent<PosInterpolation>().AddMovement(newPos);
 
     }
 }

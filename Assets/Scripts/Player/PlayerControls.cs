@@ -11,7 +11,7 @@ public class PlayerControls : MonoBehaviour
     {
 
         controlsScript = new BasicPlayerControls(head);
-        
+      
 
     }
 
