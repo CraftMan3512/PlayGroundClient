@@ -64,7 +64,8 @@ public class ClientHandle
     {
 
         int id = packet.ReadInt();
-        if (GameManager.players.ContainsKey(id))
+        int scene = packet.ReadInt();
+        if (GameManager.players.ContainsKey(id) && (int)SceneChanger.CurrentScene == scene)
         {
             
             Object.Destroy(GameManager.players[id].gameObject);

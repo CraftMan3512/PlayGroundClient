@@ -392,7 +392,7 @@ public class Client : MonoBehaviour
         Debug.Log("Disconnected from server.");
     }
 
-    private void CloseConnection()
+    public void CloseConnection()
     {
         
         if (isConnected)

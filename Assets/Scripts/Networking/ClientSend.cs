@@ -45,6 +45,7 @@ public class ClientSend : MonoBehaviour
         {
             
             packet.Write(Client.GetMyId());
+            packet.Write((int)SceneChanger.CurrentScene);
             
             SendTCPData(packet);
             

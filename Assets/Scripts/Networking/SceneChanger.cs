@@ -17,13 +17,15 @@ public enum SceneTypes
 public static class SceneChanger
 {
 
-    private static SceneTypes CurrentScene;
+    public static SceneTypes CurrentScene;
     
     public static void ChangeScene(SceneTypes nextScene)
     {
 
         //Change scene
         SceneManager.LoadScene((int)nextScene);
+        
+        CurrentScene = nextScene;
         
         //if connected, tell server we changed scene
         if (Client.instance != null)
@@ -32,15 +34,17 @@ public static class SceneChanger
             if (nextScene != SceneTypes.ErrorScreen && nextScene != SceneTypes.TitleScreen)
             {
                 
-                ClientSend.ChangedScene((int) nextScene);   
+                ClientSend.ChangedScene((int) nextScene);
+                ClientSend.SpawnPlayers();
                 
             }
+            else
+            {
                 
+                Client.instance.CloseConnection();
+                
+            }
         }
-        
-        CurrentScene = nextScene;
-        
-
     }
 
     public static void GoToErrorScreen(string errorMessage)

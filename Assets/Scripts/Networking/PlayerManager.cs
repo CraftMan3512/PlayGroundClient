@@ -8,7 +8,6 @@ public class PlayerManager : MonoBehaviour
     
     public int id;
     public string username;
-    public Vector3 position;
-    public int currentScene;
+    //public int currentScene;
 
 }
