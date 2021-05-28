@@ -10,8 +10,8 @@ public class PlayerControls : MonoBehaviour
     void Start()
     {
 
-        controlsScript = new BasicPlayerControls(head);
-      
+        controlsScript = new BasicPlayerControls(head, GetComponent<Rigidbody>());
+        InvokeRepeating(nameof(SendPlayerPosToServer),0,0.033333f);
 
     }
 
@@ -26,19 +26,17 @@ public class PlayerControls : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (Client.instance != null)
-        {
-            
-            SendPlayerPosToServer();//TODO PROGRAMMER CETTE FONCTION LA
-
-        }
-
     }
 
     private void SendPlayerPosToServer()
     {
-        
-        ClientSend.PlayerPosition(transform.position);
-        
+
+        if (Client.instance != null)
+        {
+            
+            ClientSend.PlayerPosition(transform.position);   
+            
+        }
+
     }
 }
