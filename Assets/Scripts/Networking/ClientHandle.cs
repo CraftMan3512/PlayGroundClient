@@ -69,7 +69,7 @@ public class ClientHandle
         {
             
             Object.Destroy(GameManager.players[id].gameObject);
-            GameManager.players.Remove(id);   
+            GameManager.players.Remove(id);
             
         }
 
