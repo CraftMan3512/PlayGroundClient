@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public void SpawnPlayer(int id, string username, int currentScene)
     {
         
+        Debug.Log($"SPawning player #{id}! {username} in scene {currentScene}");
         GameObject player;
         if (id == Client.GetMyId()) // si c'est le joueur local
         {
@@ -30,13 +31,28 @@ public class GameManager : MonoBehaviour
         //Assign values related to player
         player.GetComponent<PlayerManager>().id = id;
         player.GetComponent<PlayerManager>().username = username;
-        players.Add(id, player.GetComponent<PlayerManager>());
+        if (players.ContainsKey(id) && id != Client.GetMyId()) DeletePlayer(id);
+        if (!players.ContainsKey(id)) players.Add(id, player.GetComponent<PlayerManager>());
     }
 
     public static void UpdatePlayerPos(int id, Vector3 newPos)
     {
 
         if (players.ContainsKey(id)) players[id].GetComponent<PosInterpolation>().AddMovement(newPos);
+
+    }
+
+    public static void DeletePlayer(int id)
+    {
+        if (players.ContainsKey(id))
+        {
+
+            GameObject p = players[id].gameObject;
+            players.Remove(id);
+            Destroy(p);
+            p = null;
+
+        }
 
     }
 }

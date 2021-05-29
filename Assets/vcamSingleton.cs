@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSPawner : MonoBehaviour
+public class vcamSingleton : MonoBehaviour
 {
+    private static bool exists = false;
+    
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
 
-        ClientSend.SpawnPlayers();
-        
-        Destroy(gameObject);
+        if (exists) Destroy(gameObject);
+        else exists = true;
 
     }
 

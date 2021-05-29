@@ -389,7 +389,7 @@ public class Client : MonoBehaviour
         CloseConnection();
         //disconnected, go to disconnect screen
         SceneChanger.GoToErrorScreen($"Disconnected from server\n {ex.Message}");
-        Debug.Log("Disconnected from server.");
+        //Debug.Log("Disconnected from server.");
     }
 
     public void CloseConnection()
@@ -404,7 +404,7 @@ public class Client : MonoBehaviour
             
             GameManager.players.Clear();
             
-            Debug.Log("Disconnected from server.");
+            //Debug.Log("Disconnected from server.");
 
         }
         

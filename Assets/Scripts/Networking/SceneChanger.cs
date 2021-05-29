@@ -10,6 +10,7 @@ public enum SceneTypes
     TitleScreen = 0,
     ErrorScreen = 1,
     HubWorldScene = 2,
+    PlaygroundScene = 3,
     
     
 }
@@ -19,14 +20,11 @@ public static class SceneChanger
 
     public static SceneTypes CurrentScene;
     
-    public static void ChangeScene(SceneTypes nextScene)
+    public static void ChangeScene(SceneTypes nextScene, bool firstLoad = false)
     {
-
-        //Change scene
-        SceneManager.LoadScene((int)nextScene);
         
         CurrentScene = nextScene;
-        
+
         //if connected, tell server we changed scene
         if (Client.instance != null)
         {
@@ -35,13 +33,20 @@ public static class SceneChanger
             {
                 
                 ClientSend.ChangedScene((int) nextScene);
+                
+                //Change scene
+                SceneManager.LoadScene((int)nextScene);
+                GameManager.players.Clear();
                 ClientSend.SpawnPlayers();
                 
             }
             else
             {
+                //Change scene
+                SceneManager.LoadScene((int)nextScene);
                 
                 Client.instance.CloseConnection();
+                //TODO destroy local player here
                 
             }
         }

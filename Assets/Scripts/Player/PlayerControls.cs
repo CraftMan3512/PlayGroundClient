@@ -6,10 +6,14 @@ public class PlayerControls : MonoBehaviour
 {
     private IPlayerControls controlsScript;
     public GameObject head;
+
+    private static bool exists = false;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
 
+        if (exists) Destroy(gameObject);
+        else exists = true;
         controlsScript = new BasicPlayerControls(head, GetComponent<Rigidbody>());
       
 

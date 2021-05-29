@@ -12,23 +12,17 @@ public class CollisionZone : MonoBehaviour
 {
 
     public OnEnter onEnter;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
+    private bool locked = false;
+    
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "LocalPlayer")
+        if (other.gameObject.tag == "LocalPlayer" && !locked)
         {
             
-            onEnter.Invoke(other.gameObject);   
-            
+            Debug.Log("AGGOGUGUGUGU");
+            onEnter.Invoke(other.gameObject);
+            locked = true;
+
         }
         
     }

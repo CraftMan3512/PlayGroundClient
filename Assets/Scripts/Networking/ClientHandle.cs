@@ -35,7 +35,7 @@ public class ClientHandle
             
         }
         //change scene
-        SceneChanger.ChangeScene(SceneTypes.HubWorldScene);
+        SceneChanger.ChangeScene(SceneTypes.HubWorldScene, true);
         
     }
 
@@ -54,9 +54,23 @@ public class ClientHandle
     {
 
         int id = packet.ReadInt();
+        int oldScene = packet.ReadInt();
         int newScene = packet.ReadInt();
-        
-        //GameManager.players[id].GetComponent<SceneTracker>().SetCurrentScene(newScene); TODO changer
+        string username = packet.ReadString();
+
+        if (SceneChanger.CurrentScene == (SceneTypes) oldScene)
+        {
+
+            GameManager.DeletePlayer(id);
+
+        }
+
+        if (SceneChanger.CurrentScene == (SceneTypes) newScene)
+        {
+
+            Object.FindObjectOfType<GameManager>().SpawnPlayer(id, username, newScene);
+
+        }
 
     }
     
