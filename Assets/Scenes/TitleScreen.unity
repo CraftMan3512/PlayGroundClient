@@ -870,7 +870,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1860908580}
         m_TargetAssemblyTypeName: ServerPing, Assembly-CSharp
-        m_MethodName: PingServer
+        m_MethodName: PingServerAsync
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
