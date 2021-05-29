@@ -17,9 +17,9 @@ public class ClientHandle
         Client.SetId(myId);
         
         ClientSend.WelcomeReceived();
+        
+        //Actually connect to server
         Client.instance.udp.Connect(((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
-        
-        
         
     }
 

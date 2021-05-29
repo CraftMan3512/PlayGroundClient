@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
         
         Debug.Log($"SPawning player #{id}! {username} in scene {currentScene}");
         GameObject player;
+        
         if (id == Client.GetMyId()) // si c'est le joueur local
         {
             player = GameObject.FindGameObjectWithTag("LocalPlayer");
@@ -23,16 +24,15 @@ public class GameManager : MonoBehaviour
         }
         else //si c'est un autre joueur
         {
-            //Debug.Log("OTHER PLAYER JOINED!!!!!");
+            
             player = Instantiate(playerObjectPrefab, Vector3.zero, Quaternion.identity);
             
         }
 
-        //Assign values related to player
+        //Assign values related to player and add it to list
         player.GetComponent<PlayerManager>().id = id;
         player.GetComponent<PlayerManager>().username = username;
-        if (players.ContainsKey(id) && id != Client.GetMyId()) DeletePlayer(id);
-        if (!players.ContainsKey(id)) players.Add(id, player.GetComponent<PlayerManager>());
+        players.Add(id, player.GetComponent<PlayerManager>());
     }
 
     public static void UpdatePlayerPos(int id, Vector3 newPos)
@@ -44,15 +44,10 @@ public class GameManager : MonoBehaviour
 
     public static void DeletePlayer(int id)
     {
-        if (players.ContainsKey(id))
-        {
 
-            GameObject p = players[id].gameObject;
-            players.Remove(id);
-            Destroy(p);
-            p = null;
-
-        }
-
+        //delete player object and remove it from players list
+        Destroy(players[id].gameObject);
+        players.Remove(id);
+        
     }
 }

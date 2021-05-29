@@ -19,7 +19,6 @@ public class CollisionZone : MonoBehaviour
         if (other.gameObject.tag == "LocalPlayer" && !locked)
         {
             
-            Debug.Log("AGGOGUGUGUGU");
             onEnter.Invoke(other.gameObject);
             locked = true;
 

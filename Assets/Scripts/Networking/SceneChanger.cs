@@ -24,6 +24,11 @@ public static class SceneChanger
     {
         
         CurrentScene = nextScene;
+        //Change scene
+        SceneManager.LoadScene((int)nextScene);
+        
+        //empty players list (local players will be readded in spawnplayers)
+        GameManager.players.Clear();
 
         //if connected, tell server we changed scene
         if (Client.instance != null)
@@ -33,18 +38,12 @@ public static class SceneChanger
             {
                 
                 ClientSend.ChangedScene((int) nextScene);
-                
-                //Change scene
-                SceneManager.LoadScene((int)nextScene);
-                GameManager.players.Clear();
-                ClientSend.SpawnPlayers();
+                //ClientSend.SpawnPlayers();
                 
             }
             else
             {
-                //Change scene
-                SceneManager.LoadScene((int)nextScene);
-                
+
                 Client.instance.CloseConnection();
                 //TODO destroy local player here
                 

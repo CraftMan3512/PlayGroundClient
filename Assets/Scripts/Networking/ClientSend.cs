@@ -30,7 +30,6 @@ public class ClientSend : MonoBehaviour
 
             packet.Write(Client.GetMyId());
             packet.Write(MenuButtons.usernameEntered);
-            //packet.Write(OnlineConnectionManager.instance.passwordField.text); //TODO Hash encrypt password and username
             
             SendTCPData(packet);
 
@@ -38,7 +37,7 @@ public class ClientSend : MonoBehaviour
 
     }
 
-    public static void SpawnPlayers()
+    /*public static void SpawnPlayers() //Packet now useless, spawn players done in change scene serverside
     {
 
         using (Packet packet = new Packet((int) ClientPackets.SpawnPlayers))
@@ -51,7 +50,7 @@ public class ClientSend : MonoBehaviour
             
         }
         
-    }
+    }*/
 
     public static void ChangedScene(int newScene)
     {
