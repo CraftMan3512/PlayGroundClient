@@ -33,7 +33,7 @@ public class PlayerControls : MonoBehaviour
         if (Client.instance != null)
         {
             
-            SendPlayerPosToServer();//TODO PROGRAMMER CETTE FONCTION LA
+            SendPlayerPosToServer();
 
         }
 

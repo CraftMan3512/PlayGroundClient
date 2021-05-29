@@ -92,6 +92,40 @@ namespace PlayGroundServer
 
         }
 
+        public static void PlayerRotation(int fromClient, Packet packet)
+        {
+
+            Vector3 newRot = packet.ReadVector3();
+
+            if (Server.clients[fromClient].player != null)
+            {
+
+                Server.clients[fromClient].player.rotX = newRot.X;
+                Server.clients[fromClient].player.rotY = newRot.Y;
+                Server.clients[fromClient].player.rotZ = newRot.Z;
+
+            }
+
+            //send new rot to all players in the same scene
+            foreach (var c in Server.clients.Values)
+            {
+
+                if (c.player != null && Server.clients[fromClient].player != null)
+                {
+
+                    if (c.player.currentScene == Server.clients[fromClient].player.currentScene && c.id != fromClient)
+                    {
+
+                        ServerSend.PlayerRotation(c.id, fromClient, newRot);
+
+                    }
+
+                }
+
+            }
+
+        }
+
         public static void SendMessage(int fromClient, Packet packet)
         {
 

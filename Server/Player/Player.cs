@@ -17,12 +17,11 @@ namespace PlayGroundServer
         public string username;
 
         public double posX,posY,posZ;
-        [NonSerialized]
-        public Vector3 playerRotation;
+        public double rotX, rotY, rotZ;
 
         public int currentScene { get; private set; }
 
-        public Player(int _id, string _username, int startingScene)
+        public Player(int _id, string _username)
         {
 
             id = _id;
@@ -30,8 +29,9 @@ namespace PlayGroundServer
             posX = 0;
             posY = 0;
             posZ = 0;
-            currentScene = startingScene;
-            playerRotation = Vector3.Zero;
+            rotX = 0;
+            rotY = 0;
+            rotZ = 0;
             currentScene = Constants.TITLESCREEN_SCENEINDEX;
 
         }
@@ -44,7 +44,9 @@ namespace PlayGroundServer
             posX = _playerPos.X;
             posY = _playerPos.Y;
             posZ = _playerPos.Z;
-            playerRotation = Vector3.Zero;
+            rotX = 0;
+            rotY = 0;
+            rotZ = 0;
             currentScene = Constants.TITLESCREEN_SCENEINDEX;
 
         }

@@ -112,7 +112,7 @@ namespace PlayGroundServer
             {
                 
                 //creates new player with supplied stuff, then adds it to players and saves it so its registered
-                Player newPly =  new Player(id, username, 0);
+                Player newPly =  new Player(id, username);
                 
                 users.Add(username, newPly);
                 SaveGameData();

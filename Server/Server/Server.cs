@@ -157,6 +157,7 @@ namespace PlayGroundServer
                 {(int)ClientPackets.playerPosition, ServerHandle.PlayerPosition},
                 {(int)ClientPackets.SendMessage, ServerHandle.SendMessage},
                 {(int)ClientPackets.SpawnPlayers, ServerHandle.SpawnPlayers },
+                {(int)ClientPackets.PlayerRotation, ServerHandle.PlayerRotation },
 
             };
             Console.WriteLine("Initialized packets.");

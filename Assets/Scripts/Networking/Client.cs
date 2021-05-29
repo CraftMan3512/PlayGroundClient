@@ -379,6 +379,7 @@ public class Client : MonoBehaviour
             {(int)ServerPackets.SendMessage, ClientHandle.SendMessage},
             {(int)ServerPackets.ToErrorScreen, ClientHandle.ToErrorScreen},
             {(int)ServerPackets.ToGameScene, ClientHandle.ToGameScene},
+            {(int)ServerPackets.PlayerRotation, ClientHandle.PlayerRotation},
         };
         Debug.Log("Initialized Packets.");
 

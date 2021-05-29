@@ -179,6 +179,21 @@ namespace PlayGroundServer
 
         }
 
+        public static void PlayerRotation(int toClient, int id, Vector3 rotation)
+        {
+
+            using (Packet packet = new Packet((int)ServerPackets.PlayerRotation))
+            {
+
+                packet.Write(id);
+                packet.Write(rotation);
+
+                SendUDPData(toClient, packet);
+
+            }
+
+        }
+
         public static void SendMessage(string msg)
         {
 

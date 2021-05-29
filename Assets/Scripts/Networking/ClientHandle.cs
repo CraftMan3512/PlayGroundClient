@@ -100,6 +100,17 @@ public class ClientHandle
 
     }
 
+    public static void PlayerRotation(Packet packet)
+    {
+
+        int id = packet.ReadInt();
+
+        Vector3 newRot = packet.ReadVector3();
+
+        GameManager.UpdatePlayerRotation(id, newRot);
+
+    }
+
     public static void SendMessage(Packet packet)
     {
 

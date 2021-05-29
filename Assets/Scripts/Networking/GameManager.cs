@@ -42,6 +42,13 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public static void UpdatePlayerRotation(int id, Vector3 newRotation)
+    {
+
+        if (players.ContainsKey(id)) players[id].GetComponent<RotInterpolation>().AddRotation(newRotation);
+
+    }
+
     public static void DeletePlayer(int id)
     {
 

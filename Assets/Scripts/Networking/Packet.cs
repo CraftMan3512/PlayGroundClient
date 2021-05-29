@@ -14,6 +14,7 @@ public enum ServerPackets
     SendMessage,
     ToErrorScreen,
     ToGameScene,
+    PlayerRotation,
 
 
 }
@@ -26,6 +27,7 @@ public enum ClientPackets
     playerPosition,
     SendMessage,
     SpawnPlayers,
+    PlayerRotation,
         
 }
 

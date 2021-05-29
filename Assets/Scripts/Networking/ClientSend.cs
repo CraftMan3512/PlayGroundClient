@@ -80,6 +80,20 @@ public class ClientSend : MonoBehaviour
         
     }
 
+    public static void PlayerRotation(Vector3 newRot)
+    {
+
+        using (Packet packet = new Packet((int) ClientPackets.PlayerRotation))
+        {
+            
+            packet.Write(newRot);
+            
+            SendUDPData(packet);
+            
+        }
+        
+    }
+
     public static void SendMessage(string msg)
     {
 

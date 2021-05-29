@@ -17,6 +17,7 @@ namespace PlayGroundServer
         SendMessage,
         ToErrorScreen,
         ToGameScene,
+        PlayerRotation,
 
     }
 
@@ -28,7 +29,8 @@ namespace PlayGroundServer
         playerPosition,
         SendMessage,
         SpawnPlayers,
-        
+        PlayerRotation,
+
     }
 
     public class Packet : IDisposable
