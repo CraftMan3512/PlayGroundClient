@@ -65,7 +65,7 @@ public class ServerPing : MonoBehaviour
             string sendIp = string.Equals(ip.text, "localhost", StringComparison.CurrentCultureIgnoreCase) ? "127.0.0.1" : ip.text;
 
             //ping machine first, if it doesnt work, don't ping the port to save the freeze
-            using (Ping pingSender = new Ping())
+ /*           using (Ping pingSender = new Ping())
             {
 
                 var options = new PingOptions();
@@ -76,22 +76,22 @@ public class ServerPing : MonoBehaviour
                 byte[] buffer = Encoding.ASCII.GetBytes("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 
                 //send ping async
-                PingReply reply = pingSender.Send(IPAddress.Parse(sendIp), 80, buffer, options);
+                PingReply reply = pingSender.Send(IPAddress.Parse(sendIp), 2000, buffer, options);
 
                 if (reply.Status == IPStatus.Success)
-                {
+                {*/
 
                     //success, ping port now
                     using (var client = new TcpClient())
                     {
-                        client.SendTimeout = 60;
-                        client.ReceiveTimeout = 60;
-                        await client.ConnectAsync(sendIp, Client.port);
+                        client.SendTimeout = 2000;
+                        client.ReceiveTimeout = 2000;
+                        await client.ConnectAsync(IPAddress.Parse(sendIp), Client.port);
                         return true;
 
                     }
 
-                }
+               /* }
                 else
                 {
 
@@ -99,7 +99,7 @@ public class ServerPing : MonoBehaviour
 
                 }
 
-            }
+            }*/
 
         }
         catch (FormatException ex)
