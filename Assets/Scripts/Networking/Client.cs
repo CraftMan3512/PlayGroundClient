@@ -34,7 +34,7 @@ public class Client : MonoBehaviour
         {
             
             Debug.Log("Instance already exists, destroying object!");
-            Destroy(this);
+            Destroy(gameObject);
             
         }
     }

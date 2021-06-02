@@ -173,7 +173,7 @@ namespace PlayGroundServer
                 packet.Write(id);
                 packet.Write(position);
 
-                SendUDPData(toClient, packet);
+                SendTCPData(toClient, packet);
 
             }
 
@@ -188,7 +188,7 @@ namespace PlayGroundServer
                 packet.Write(id);
                 packet.Write(rotation);
 
-                SendUDPData(toClient, packet);
+                SendTCPData(toClient, packet);
 
             }
 

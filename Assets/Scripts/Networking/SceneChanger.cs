@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Object = UnityEngine.Object;
 
 public enum SceneTypes
 {
@@ -46,7 +47,8 @@ public static class SceneChanger
 
                 Client.instance.CloseConnection();
                 //TODO destroy local player here
-                
+                DestroyLocalPlayer();
+
             }
         }
     }
@@ -59,10 +61,24 @@ public static class SceneChanger
         {
             
             SceneManager.LoadScene((int)SceneTypes.ErrorScreen); 
+            DestroyLocalPlayer();
             
         });
         Debug.Log("WENT TO ERROR SCREEN!!!!");
 
+    }
+
+    private static void DestroyLocalPlayer()
+    {
+        
+        GameObject player = GameObject.FindGameObjectWithTag("LocalPlayer");
+        if (player != null)
+        {
+            PlayerControls.exists = false;
+            Object.Destroy(player);
+                    
+        }
+        
     }
 
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ClientSend : MonoBehaviour
 {
+    private static int send = 0;
+    
     private static void SendTCPData(Packet packet)
     {
         
@@ -68,16 +70,24 @@ public class ClientSend : MonoBehaviour
 
     public static void PlayerPosition(Vector3 newPos)
     {
-        
-        using (Packet packet = new Packet((int)ClientPackets.playerPosition))
+
+        send++;
+
+        if (send == 5)
         {
+
+            send = 0;
+            using (Packet packet = new Packet((int)ClientPackets.playerPosition))
+            {
             
-            packet.Write(newPos);
+                packet.Write(newPos);
             
-            SendUDPData(packet);
+                SendUDPData(packet);
+            
+            }   
             
         }
-        
+
     }
 
     public static void PlayerRotation(Vector3 newRot)

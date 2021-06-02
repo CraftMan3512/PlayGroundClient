@@ -7,7 +7,7 @@ public class PlayerControls : MonoBehaviour
     private IPlayerControls controlsScript;
     public GameObject head;
 
-    private static bool exists = false;
+    public static bool exists = false;
     // Start is called before the first frame update
     void Awake()
     {
