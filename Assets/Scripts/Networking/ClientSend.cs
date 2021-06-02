@@ -70,23 +70,15 @@ public class ClientSend : MonoBehaviour
 
     public static void PlayerPosition(Vector3 newPos)
     {
-
-        send++;
-
-        if (send == 5)
-        {
-
-            send = 0;
+        
             using (Packet packet = new Packet((int)ClientPackets.playerPosition))
             {
             
                 packet.Write(newPos);
             
-                SendTCPData(packet);
+                SendUDPData(packet);
             
-            }   
-            
-        }
+            }
 
     }
 
