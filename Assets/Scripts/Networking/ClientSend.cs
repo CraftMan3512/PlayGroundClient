@@ -82,7 +82,7 @@ public class ClientSend : MonoBehaviour
             
                 packet.Write(newPos);
             
-                SendUDPData(packet);
+                SendTCPData(packet);
             
             }   
             
