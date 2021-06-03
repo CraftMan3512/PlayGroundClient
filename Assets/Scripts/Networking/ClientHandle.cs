@@ -13,7 +13,7 @@ public class ClientHandle
         string msg = packet.ReadString();
         int myId = packet.ReadInt();
         
-        Debug.Log($"Message from server: {msg}");
+        ErrorDisplayer.Log($"Message from server: {msg}");
         Client.SetId(myId);
         
         ClientSend.WelcomeReceived();
@@ -31,7 +31,7 @@ public class ClientHandle
         if (id != Client.GetMyId())
         {
             
-            Debug.Log("ID MISMATCH!!!!!!!!!");
+            ErrorDisplayer.Log("ID MISMATCH!!!!!!!!!");
             
         }
         //change scene
@@ -116,7 +116,7 @@ public class ClientHandle
 
         string message = packet.ReadString();
         
-        Debug.Log($"Message from server: {message}");
+        ErrorDisplayer.Log($"Message from server: {message}");
 
     }
 

@@ -40,7 +40,7 @@ public class PosInterpolation : MonoBehaviour
 
             double fraction = (Time.time - startTime) / Time.fixedDeltaTime;
             
-            //Debug.Log($"TRYING TO MOVE OTHER PLAYER, FRACTION IS {fraction}, {Movements.Count} POS INSIDE");
+            //ErrorDisplayer.Log($"TRYING TO MOVE OTHER PLAYER, FRACTION IS {fraction}, {Movements.Count} POS INSIDE");
 
             if (fraction <= 1f && !firstPos)
             {
@@ -87,7 +87,7 @@ public class PosInterpolation : MonoBehaviour
     {
         
         Movements.Enqueue(movement);
-        //Debug.Log($"WE HAVE {Movements.Count} MOVEMENTS IN STOCK!!!"); //TODO Enable this debug to check if the queue risks overloading sometime, seems good for now
+        //ErrorDisplayer.Log($"WE HAVE {Movements.Count} MOVEMENTS IN STOCK!!!"); //TODO Enable this debug to check if the queue risks overloading sometime, seems good for now
 
     }
 

@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public void SpawnPlayer(int id, string username, int currentScene)
     {
         
-        Debug.Log($"SPawning player #{id}! {username} in scene {currentScene}");
+        ErrorDisplayer.Log($"SPawning player #{id}! {username} in scene {currentScene}");
         GameObject player;
         
         if (id == Client.GetMyId()) // si c'est le joueur local

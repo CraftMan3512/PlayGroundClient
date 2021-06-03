@@ -41,7 +41,7 @@ public class ServerPing : MonoBehaviour
         if (await PingHost())
         {
             
-            Debug.Log("PING SUCCESSFUL!");
+            ErrorDisplayer.Log("PING SUCCESSFUL!");
             connectivityIndicator.color = Color.green;
             playButton.interactable = true;
 
@@ -105,13 +105,13 @@ public class ServerPing : MonoBehaviour
         catch (FormatException ex)
         {
             
-            Debug.Log("U didnt enter an ip address >:(");
+            ErrorDisplayer.Log("U didnt enter an ip address >:(");
             return false;
 
         }
         catch (Exception ex)
         {
-            Debug.Log($"Error pinging host:'" + ip.text + ":" + Client.port + $"', ex: {ex}");
+            ErrorDisplayer.Log($"Error pinging host:'" + ip.text + ":" + Client.port + $"', ex: {ex}");
             return false;
         }
     }

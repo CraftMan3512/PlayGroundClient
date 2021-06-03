@@ -33,7 +33,7 @@ public class Client : MonoBehaviour
         } else if (instance != this)
         {
             
-            Debug.Log("Instance already exists, destroying object!");
+            ErrorDisplayer.Log("Instance already exists, destroying object!");
             Destroy(gameObject);
             
         }
@@ -143,7 +143,7 @@ public class Client : MonoBehaviour
             catch (Exception ex)
             {
                 
-                Debug.Log($"Error sending data to server via TCP: {ex.Message}");
+                ErrorDisplayer.Log($"Error sending data to server via TCP: {ex.Message}");
                 
             }
             
@@ -172,7 +172,7 @@ public class Client : MonoBehaviour
             } catch(Exception ex)
             {
 
-                //Debug.Log($"Error receiving TCP data: {ex}");
+                //ErrorDisplayer.Log($"Error receiving TCP data: {ex}");
                 Disconnect(new Exception($"Error receiving TCP data: {ex.Message}"));
 
             }
@@ -293,7 +293,7 @@ public class Client : MonoBehaviour
             catch (Exception ex)
             {
                 
-                Debug.Log($"Error sending data to server via UDP: {ex.Message}");
+                ErrorDisplayer.Log($"Error sending data to server via UDP: {ex.Message}");
                 
             }
             
@@ -381,7 +381,7 @@ public class Client : MonoBehaviour
             {(int)ServerPackets.ToGameScene, ClientHandle.ToGameScene},
             {(int)ServerPackets.PlayerRotation, ClientHandle.PlayerRotation},
         };
-        Debug.Log("Initialized Packets.");
+        ErrorDisplayer.Log("Initialized Packets.");
 
     }
 
@@ -390,7 +390,7 @@ public class Client : MonoBehaviour
         CloseConnection();
         //disconnected, go to disconnect screen
         SceneChanger.GoToErrorScreen($"Disconnected from server\n {ex.Message}");
-        //Debug.Log("Disconnected from server.");
+        //ErrorDisplayer.Log("Disconnected from server.");
     }
 
     public void CloseConnection()
@@ -405,7 +405,7 @@ public class Client : MonoBehaviour
             
             GameManager.players.Clear();
             
-            //Debug.Log("Disconnected from server.");
+            //ErrorDisplayer.Log("Disconnected from server.");
 
         }
         

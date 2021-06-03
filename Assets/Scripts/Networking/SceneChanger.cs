@@ -64,7 +64,7 @@ public static class SceneChanger
             DestroyLocalPlayer();
             
         });
-        Debug.Log("WENT TO ERROR SCREEN!!!!");
+        ErrorDisplayer.Log("WENT TO ERROR SCREEN!!!!");
 
     }
 
