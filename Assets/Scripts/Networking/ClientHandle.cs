@@ -91,10 +91,12 @@ public class ClientHandle
 
     public static void PlayerPosition(Packet packet)
     {
-
+        
         int id = packet.ReadInt();
 
         Vector3 newPos = packet.ReadVector3();
+        
+        ErrorDisplayer.Log($"PLAYER {id} POS: {newPos}");
         
         GameManager.UpdatePlayerPos(id, newPos);
 
