@@ -5,6 +5,6 @@ using UnityEngine;
 public interface IPlayerControls
 {
 
-    public abstract void MovePlayer(GameObject player);
+    void MovePlayer(GameObject player);
 
 }
