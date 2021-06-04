@@ -70,7 +70,6 @@ public class PosInterpolation : MonoBehaviour
                 {
                     firstPos = false;
                     PreviousPos = Movements.Dequeue();
-                    NewMovement();
                 }
                 else
                 {
@@ -79,6 +78,7 @@ public class PosInterpolation : MonoBehaviour
                     Movements.Clear();
 
                 }
+                NewMovement();
 
             }
 
