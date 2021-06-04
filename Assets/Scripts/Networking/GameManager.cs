@@ -38,14 +38,14 @@ public class GameManager : MonoBehaviour
     public static void UpdatePlayerPos(int id, Vector3 newPos)
     {
 
-        if (players.ContainsKey(id)) players[id].GetComponent<PosInterpolation>().AddMovement(newPos);
+        if (players.ContainsKey(id)) players[id].GetComponent<PosInterpolation>().SetMovement(newPos);
 
     }
 
     public static void UpdatePlayerRotation(int id, Vector3 newRotation)
     {
 
-        if (players.ContainsKey(id)) players[id].GetComponent<Rigidbody>().rotation = Quaternion.Euler(newRotation);
+        if (players.ContainsKey(id)) players[id].GetComponent<RotInterpolation>().SetRotation(newRotation);
 
     }
 

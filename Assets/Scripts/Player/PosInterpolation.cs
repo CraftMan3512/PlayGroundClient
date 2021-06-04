@@ -23,11 +23,11 @@ public class PosInterpolation : MonoBehaviour
     private void Update()
     {
         
-        tf.position = Vector3.MoveTowards(tf.position, nextPos, dist * 30 * Time.deltaTime);
+        tf.position = Vector3.MoveTowards(tf.position, nextPos, dist * (1f/Time.fixedDeltaTime) * Time.deltaTime);
         
     }
 
-    public void AddMovement(Vector3 movement)
+    public void SetMovement(Vector3 movement)
     {
         
         //ErrorDisplayer.Log($"PLAYER INTERPOL: {movement}");
