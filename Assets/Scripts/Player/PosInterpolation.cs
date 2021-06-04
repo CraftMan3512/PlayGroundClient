@@ -6,10 +6,7 @@ using UnityEngine;
 
 public class PosInterpolation : MonoBehaviour
 {
-
-
-    public int nbPos;
-    private float startTime;
+    
     private float dist;
     private Vector3 nextPos;
     private Transform tf;
@@ -18,7 +15,6 @@ public class PosInterpolation : MonoBehaviour
     {
         
         tf = transform;
-        startTime = 0.1f;
         dist = 0;
         nextPos = Vector3.zero;
 
