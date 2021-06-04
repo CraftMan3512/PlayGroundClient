@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PosInterpolation : MonoBehaviour
@@ -15,8 +16,7 @@ public class PosInterpolation : MonoBehaviour
     
     public InterpolationTypes interpolationMode = InterpolationTypes.Lerp;
 
-    
-    
+
     public int nbPos;
     private float startTime;
     private bool firstPos = true;
@@ -39,7 +39,7 @@ public class PosInterpolation : MonoBehaviour
         if (Movements.Count > 0)
         {
 
-            double fraction = (Time.fixedTime - startTime) / Time.fixedDeltaTime;
+            double fraction = (Time.time - startTime) / Time.fixedDeltaTime;
             
             ErrorDisplayer.Log($"TRYING TO MOVE OTHER PLAYER, FRACTION IS {fraction}, {Movements.Count} POS INSIDE");
 
@@ -66,9 +66,19 @@ public class PosInterpolation : MonoBehaviour
             else
             {
 
-                if (firstPos) firstPos = false;
-                PreviousPos = Movements.Dequeue();
-                NewMovement();
+                if (firstPos)
+                {
+                    firstPos = false;
+                    PreviousPos = Movements.Dequeue();
+                    NewMovement();
+                }
+                else
+                {
+
+                    tf.position = Movements.Last();
+                    Movements.Clear();
+
+                }
 
             }
 
