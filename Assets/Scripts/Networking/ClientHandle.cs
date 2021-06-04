@@ -95,9 +95,7 @@ public class ClientHandle
         int id = packet.ReadInt();
 
         Vector3 newPos = packet.ReadVector3();
-        
-        ErrorDisplayer.Log($"PLAYER {id} POS: {newPos}");
-        
+
         GameManager.UpdatePlayerPos(id, newPos);
 
     }

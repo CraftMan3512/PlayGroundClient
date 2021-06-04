@@ -16,6 +16,7 @@ public class PosInterpolation : MonoBehaviour
     public InterpolationTypes interpolationMode = InterpolationTypes.Lerp;
 
     
+    
     public int nbPos;
     private float startTime;
     private bool firstPos = true;
@@ -25,7 +26,7 @@ public class PosInterpolation : MonoBehaviour
 
     private void Awake()
     {
-     
+        
         tf = transform;
         startTime = 0.1f;
         Movements = new Queue<Vector3>();
@@ -38,9 +39,9 @@ public class PosInterpolation : MonoBehaviour
         if (Movements.Count > 0)
         {
 
-            double fraction = (Time.time - startTime) / Time.fixedDeltaTime;
+            double fraction = (Time.fixedTime - startTime) / Time.fixedDeltaTime;
             
-            //ErrorDisplayer.Log($"TRYING TO MOVE OTHER PLAYER, FRACTION IS {fraction}, {Movements.Count} POS INSIDE");
+            ErrorDisplayer.Log($"TRYING TO MOVE OTHER PLAYER, FRACTION IS {fraction}, {Movements.Count} POS INSIDE");
 
             if (fraction <= 1f && !firstPos)
             {
@@ -86,6 +87,7 @@ public class PosInterpolation : MonoBehaviour
     public void AddMovement(Vector3 movement)
     {
         
+        //ErrorDisplayer.Log($"PLAYER INTERPOL: {movement}");
         Movements.Enqueue(movement);
         //ErrorDisplayer.Log($"WE HAVE {Movements.Count} MOVEMENTS IN STOCK!!!"); //TODO Enable this debug to check if the queue risks overloading sometime, seems good for now
 

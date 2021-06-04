@@ -10,11 +10,11 @@ public class GameManager : MonoBehaviour
 
     //public GameObject localPlayerCursorPrefab;
     public GameObject playerObjectPrefab;
-    
+
     public void SpawnPlayer(int id, string username, int currentScene)
     {
         
-        ErrorDisplayer.Log($"SPawning player #{id}! {username} in scene {currentScene}");
+        ErrorDisplayer.Log($"Spawning player #{id}! {username} in scene {currentScene}");
         GameObject player;
         
         if (id == Client.GetMyId()) // si c'est le joueur local
