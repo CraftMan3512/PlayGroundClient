@@ -11,6 +11,11 @@ public class GameManager : MonoBehaviour
     //public GameObject localPlayerCursorPrefab;
     public GameObject playerObjectPrefab;
 
+    private void Awake()
+    {
+        Application.targetFrameRate = -1;
+    }
+
     public void SpawnPlayer(int id, string username, int currentScene)
     {
         

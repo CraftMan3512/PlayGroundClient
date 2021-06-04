@@ -50,6 +50,12 @@ public class CameraControls : MonoBehaviour
     public void ToggleCursor(bool toggled)
     {
         Cursor.visible = toggled;
-        Cursor.lockState = toggled ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.lockState = toggled ? CursorLockMode.None : CursorLockMode.Confined;
+    }
+
+    private void OnDestroy()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }
