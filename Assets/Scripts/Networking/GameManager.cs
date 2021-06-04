@@ -10,10 +10,15 @@ public class GameManager : MonoBehaviour
 
     //public GameObject localPlayerCursorPrefab;
     public GameObject playerObjectPrefab;
+    public GameObject localPlayerPrefab;
+
+    public static GameManager instance;
 
     private void Awake()
     {
-        Application.targetFrameRate = -1;
+
+        if (instance == null) instance = this;
+        
     }
 
     public void SpawnPlayer(int id, string username, int currentScene)
@@ -61,5 +66,19 @@ public class GameManager : MonoBehaviour
         Destroy(players[id].gameObject);
         players.Remove(id);
         
+    }
+
+    public static void SpawnLocalPlayer()
+    {
+        
+        instance.SpawnLocalPlayerInstance();
+        
+    }
+
+    private void SpawnLocalPlayerInstance()
+    {
+
+        Instantiate(localPlayerPrefab, Vector3.zero, Quaternion.identity);
+
     }
 }

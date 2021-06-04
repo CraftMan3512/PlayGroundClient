@@ -8,18 +8,28 @@ public class ClientSend : MonoBehaviour
     
     private static void SendTCPData(Packet packet)
     {
-        
-        packet.WriteLength();
-        Client.instance.tcp.SendData(packet);
+
+        if (Client.isConnected)
+        {
+
+            packet.WriteLength();
+            Client.instance.tcp.SendData(packet);
+            
+        }
 
     }
 
     private static void SendUDPData(Packet packet)
     {
-        
-        packet.WriteLength();
-        Client.instance.udp.SendData(packet);
-        
+
+        if (Client.isConnected)
+        {
+            
+            packet.WriteLength();
+            Client.instance.udp.SendData(packet);   
+            
+        }
+
     }
 
     #region Packets

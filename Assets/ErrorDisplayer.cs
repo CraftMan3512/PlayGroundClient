@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class ErrorDisplayer : MonoBehaviour
 {
-    private static bool debugMode = true;
+    private static bool debugMode = false;
 
     public enum ErrorTypes
     {

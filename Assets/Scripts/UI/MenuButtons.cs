@@ -12,6 +12,13 @@ public class MenuButtons : MonoBehaviour
     
     public static string usernameEntered = "TESTUSERNAME";
 
+    public void SinglePlayer()
+    {
+        
+        SceneChanger.ChangeScene(SceneTypes.HubWorldScene, true);
+        
+    }
+    
     public void PlayGame()
     {
 

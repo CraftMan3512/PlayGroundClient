@@ -39,8 +39,9 @@ public static class SceneChanger
             {
                 
                 ClientSend.ChangedScene((int) nextScene);
+                if (firstLoad) GameManager.SpawnLocalPlayer();
                 //ClientSend.SpawnPlayers();
-                
+
             }
             else
             {
