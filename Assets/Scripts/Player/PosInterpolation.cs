@@ -10,7 +10,7 @@ public class PosInterpolation : MonoBehaviour
 
     public int nbPos;
     private float startTime;
-    private Vector3 PreviousPos;
+    private float dist;
     private Vector3 nextPos;
     private Transform tf;
 
@@ -19,14 +19,15 @@ public class PosInterpolation : MonoBehaviour
         
         tf = transform;
         startTime = 0.1f;
-        PreviousPos = tf.position;
+        dist = 0;
+        nextPos = Vector3.zero;
 
     }
 
     private void Update()
     {
         
-        tf.position = Vector3.MoveTowards(tf.position, nextPos, Vector3.Distance(tf.position, nextPos) * 30 * Time.deltaTime);
+        tf.position = Vector3.MoveTowards(tf.position, nextPos, dist * 30 * Time.deltaTime);
         
     }
 
@@ -34,6 +35,7 @@ public class PosInterpolation : MonoBehaviour
     {
         
         //ErrorDisplayer.Log($"PLAYER INTERPOL: {movement}");
+        dist = Vector3.Distance(tf.position, nextPos);
         nextPos = movement;
 
         //ErrorDisplayer.Log($"WE HAVE {Movements.Count} MOVEMENTS IN STOCK!!!"); //TODO Enable this debug to check if the queue risks overloading sometime, seems good for now
