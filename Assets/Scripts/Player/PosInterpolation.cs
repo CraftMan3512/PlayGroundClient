@@ -26,7 +26,7 @@ public class PosInterpolation : MonoBehaviour
     private void Update()
     {
         
-        tf.position = Vector3.MoveTowards(tf.position, nextPos, Vector3.Distance(tf.position, nextPos) * Time.fixedDeltaTime * Time.deltaTime);
+        tf.position = Vector3.MoveTowards(tf.position, nextPos, Vector3.Distance(tf.position, nextPos) * 30 * Time.deltaTime);
         
     }
 
