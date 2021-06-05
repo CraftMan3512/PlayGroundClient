@@ -16,23 +16,16 @@ public class ServerPing : MonoBehaviour
     private static ServerPing instance;
     
     public TMP_InputField ip;
+    
+    public TMP_InputField username;
 
     public Image connectivityIndicator;
-
-    public Button playButton;
 
     private void Awake()
     {
 
         instance = this;
 
-    }
-
-    public void ConnectToServer()
-    {
-        
-        Client.instance.ConnectToServer(ip.text);
-        
     }
 
     public async void PingServer()
@@ -43,17 +36,22 @@ public class ServerPing : MonoBehaviour
             
             ErrorDisplayer.Log("PING SUCCESSFUL!");
             connectivityIndicator.color = Color.green;
-            playButton.interactable = true;
 
         }
         else
         {
             
             connectivityIndicator.color = Color.red;
-            playButton.interactable = false;
 
         }
         
+    }
+
+    public void AddNewServer()
+    {
+
+        ServersManager.servers.Add(new Server(ip.text, username.text));
+
     }
     
     private async Task<bool> PingHost()
