@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-[Serializable]
+using Newtonsoft.Json;
+
 public class Server
 {
  
-    public string ip { get; }
-    public string username { get; }
+    public string ip { get; set; }
+    public string username { get; set; }
 
     public Server(string _ip, string _username)
     {

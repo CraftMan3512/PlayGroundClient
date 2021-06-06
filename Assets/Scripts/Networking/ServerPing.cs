@@ -100,7 +100,7 @@ public class ServerPing : MonoBehaviour
             }*/
 
         }
-        catch (FormatException ex)
+        catch (FormatException)
         {
             
             ErrorDisplayer.Log("U didnt enter an ip address >:(");

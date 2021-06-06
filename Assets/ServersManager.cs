@@ -12,6 +12,7 @@ public class ServersManager : MonoBehaviour
     public static List<Server> servers;
     public GameObject viewServer;
 
+    private static string serversSaveName = "/PlaygroundServers.json";
     private void Start()
     {
         LoadServers();
@@ -57,10 +58,10 @@ public class ServersManager : MonoBehaviour
     public static void SaveServers()
     {
         
-        string path = Application.persistentDataPath + "/PlaygroundServers.txt";
+        string path = Application.persistentDataPath + serversSaveName;
 
         string json = JsonConvert.SerializeObject(servers);
-        using (var stream = new FileStream(path, FileMode.Create))
+        using (var stream = File.Create(path))
         {
 
             var writer = new StreamWriter(stream);
@@ -76,20 +77,13 @@ public class ServersManager : MonoBehaviour
     public static void LoadServers()
     {
         
-        string path = Application.persistentDataPath + "/PlaygroundServers.txt";
+        string path = Application.persistentDataPath + serversSaveName;
 
         if(File.Exists(path))
         {
-            using (var stream = new FileStream(path, FileMode.Open))
-            {
 
-                var reader = new StreamReader(stream);
-                string text = reader.ReadLine();
-                servers = (List<Server>) JsonConvert.DeserializeObject(text);
-                reader.Close();
-                stream.Close();
-                
-            }
+            string text = File.ReadAllText(path);
+            servers = JsonConvert.DeserializeObject<List<Server>>(text);
 
         } else
         {

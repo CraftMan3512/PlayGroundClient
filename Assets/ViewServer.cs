@@ -75,7 +75,7 @@ public class ViewServer : MonoBehaviour
             }
 
         }
-        catch (FormatException ex)
+        catch (FormatException)
         {
             
             ErrorDisplayer.Log("U didnt enter an ip address >:(");
