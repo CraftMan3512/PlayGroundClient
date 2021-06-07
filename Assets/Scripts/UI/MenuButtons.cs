@@ -8,6 +8,7 @@ public class MenuButtons : MonoBehaviour
 {
 
     public CanvasGroup thisMenu;
+    public CanvasGroup addServerMenu;
     public CanvasGroup serversMenu;
     
     public static string usernameEntered = "TESTUSERNAME";
@@ -31,6 +32,30 @@ public class MenuButtons : MonoBehaviour
 
     }
 
+    public void AddServer()
+    {
+        
+        serversMenu.alpha = 0;
+        serversMenu.blocksRaycasts = false;
+        serversMenu.interactable = false;
+        addServerMenu.alpha = 1;
+        addServerMenu.interactable = true;
+        addServerMenu.blocksRaycasts = true;
+        
+    }
+
+    public void BackToServers()
+    {
+        
+        addServerMenu.alpha = 0;
+        addServerMenu.blocksRaycasts = false;
+        addServerMenu.interactable = false;
+        serversMenu.alpha = 1;
+        serversMenu.interactable = true;
+        serversMenu.blocksRaycasts = true;
+        
+    }
+
     public void QuitGame()
     {
         
@@ -42,13 +67,6 @@ public class MenuButtons : MonoBehaviour
         #endif
         
         
-    }
-
-    public void setUsernameEntered(string text)
-    {
-
-        usernameEntered = text;
-
     }
 
     public void GoToMainMenu()

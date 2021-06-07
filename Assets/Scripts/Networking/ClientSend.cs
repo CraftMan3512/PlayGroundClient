@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ClientSend : MonoBehaviour
 {
-    private static int send = 0;
-    
+
     private static void SendTCPData(Packet packet)
     {
 
