@@ -19,6 +19,9 @@ public class ViewServer : MonoBehaviour
         server = s;
 
         UpdateUI();
+        
+        CancelInvoke();
+        InvokeRepeating(nameof(PingServer),0f,5f);
 
     }
     
@@ -35,7 +38,6 @@ public class ViewServer : MonoBehaviour
 
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = server.ip;
         transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = server.username;
-        PingServer();
 
     }
 
@@ -46,12 +48,14 @@ public class ViewServer : MonoBehaviour
         {
             
             transform.GetChild(2).GetComponent<Image>().color = Color.green;
-            
+            GetComponent<Button>().interactable = true;
+
         }
         else
         {
             
             transform.GetChild(2).GetComponent<Image>().color = Color.red;
+            GetComponent<Button>().interactable = false;
             
         }
         

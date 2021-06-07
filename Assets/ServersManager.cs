@@ -11,6 +11,7 @@ public class ServersManager : MonoBehaviour
 
     public static List<Server> servers;
     public GameObject viewServer;
+    public float padding = 1f;
 
     private static string serversSaveName = "/PlaygroundServers.json";
     private void Start()
@@ -39,6 +40,9 @@ public class ServersManager : MonoBehaviour
         }
         
         float height = viewServer.GetComponent<RectTransform>().rect.height;
+        
+        //set content height (for scrolling)
+        GetComponent<RectTransform>().sizeDelta = new Vector3(0,(height * servers.Count) + ((servers.Count - 1) * (padding)));
 
         for (int i = 0; i < servers.Count; i++)
         {
@@ -46,8 +50,9 @@ public class ServersManager : MonoBehaviour
             var s = servers[i];
 
             GameObject view = Instantiate(viewServer, Vector3.zero, Quaternion.identity, transform);
-            view.GetComponent<RectTransform>().localPosition = new Vector3(0,-(i*height),0);
-            view.GetComponent<RectTransform>().anchoredPosition = new Vector3(0,-(i*height),0);
+            var newPos =  new Vector3(0,-150) + new Vector3(0,-(i*height)  - (i*padding));
+            view.GetComponent<RectTransform>().localPosition = newPos;
+            view.GetComponent<RectTransform>().anchoredPosition = newPos;
             
             view.GetComponent<ViewServer>().SetServer(s);
 
